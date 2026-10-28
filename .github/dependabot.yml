@@ -1,0 +1,36 @@
+# Native Dependabot only; repository GitHub Actions remain disabled.
+# Weekly patch/minor groups; major updates remain separate for review.
+# Proposals only: no dependency changes or auto-merge are enabled here.
+version: 2
+updates:
+  - package-ecosystem: pip
+    directory: /
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+      security-minor-and-patch:
+        applies-to: security-updates
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+  - package-ecosystem: docker
+    directory: /docker
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
+  - package-ecosystem: docker-compose
+    directory: /contrib/docker
+    schedule:
+      interval: weekly
+    open-pull-requests-limit: 5
+    groups:
+      minor-and-patch:
+        patterns: ["*"]
+        update-types: ["minor", "patch"]
